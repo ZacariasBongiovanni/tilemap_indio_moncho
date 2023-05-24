@@ -1,6 +1,8 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
 export default class Juego extends Phaser.Scene {
+  score;
+  timer;
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
@@ -21,6 +23,7 @@ export default class Juego extends Phaser.Scene {
     this.load.image("tilesPlataforma", "./public/assets/images/platform.png");
 
     this.load.image("star", "./public/assets/images/star.png");
+    this.load.image("puerta", "./public/assets/images/puerta.png");
 
     this.load.spritesheet("dude", "./public/assets/images/dude.png", {
       frameWidth: 32,
@@ -106,7 +109,17 @@ export default class Juego extends Phaser.Scene {
           const star = this.estrellas.create(x, y, "star");
           break;
         }
+        case "puerta": {
+          const puerta = this.puerta.create(x, y, "puerta");
+        }
       }
+    });
+
+    this.time.addEvent({
+      delay: 500,
+      callback: this.addShape,
+      callbackScope: this,
+      loop: true,
     });
 
     this.physics.add.collider(this.jugador, plataformaLayer);
@@ -116,6 +129,25 @@ export default class Juego extends Phaser.Scene {
       this.estrellas,
       this.recolectarEstrella
     );
+
+    this.score = 0;
+    this.scoreText = this.add.text(
+      20,
+      20,
+      "Estrellas Recolectadas:" + this.score,
+      {
+        fontSize: "20px",
+        fontStyle: "bold",
+        fill: "#FFFFFF",
+      }
+    );
+
+    this.timer = 10;
+    this.timerText = this.add.text(735, 15, this.timer, {
+      fontSize: "25px",
+      fontStyle: "bold",
+      fill: "#FFFFFF",
+    });
   }
 
   update() {
