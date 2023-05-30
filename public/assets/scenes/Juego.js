@@ -100,8 +100,11 @@ export default class Juego extends Phaser.Scene {
 
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "bomba");
     console.log("spawn point bomba", spawnPoint);
-    this.salida = this.physics.add
-      .sprite(spawnPoint.x, spawnPoint.y, "bomb");
+    this.bomba = this.physics.add
+      .sprite(spawnPoint.x, spawnPoint.y, "bomb")
+      .setScale(1)
+      .setBounce(1.15)
+    
     // find object layer
     // if type is "stars", add to stars group
     objectosLayer.objects.forEach((objData) => {
