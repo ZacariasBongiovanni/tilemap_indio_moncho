@@ -22,6 +22,7 @@ export default class Juego extends Phaser.Scene {
 
     this.load.image("star", "./public/assets/images/star.png");
     this.load.image("door", "./public/assets/images/door.png");
+    this.load.image("bomb","./public/assets/images/bomb.png");
 
     this.load.spritesheet("dude", "./public/assets/images/dude.png", {
       frameWidth: 32,
@@ -97,6 +98,10 @@ export default class Juego extends Phaser.Scene {
       .setScale(0.05);
     this.salida.visible = false;
 
+    spawnPoint = map.findObject("objetos", (obj) => obj.name === "bomba");
+    console.log("spawn point bomba", spawnPoint);
+    this.salida = this.physics.add
+      .sprite(spawnPoint.x, spawnPoint.y, "bomb");
     // find object layer
     // if type is "stars", add to stars group
     objectosLayer.objects.forEach((objData) => {
@@ -116,9 +121,11 @@ export default class Juego extends Phaser.Scene {
     this.physics.add.collider(this.jugador, plataformaLayer);
     this.physics.add.collider(this.estrellas, plataformaLayer);
     this.physics.add.collider(this.salida, plataformaLayer);
+    this.physics.add.collider(this.bomba,plataformaLayer);
     this.physics.add.collider(
       this.jugador,
       this.estrellas,
+      this.bomba,
       this.recolectarEstrella,
       null,
       this
