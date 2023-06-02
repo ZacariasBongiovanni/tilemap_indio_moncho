@@ -93,7 +93,7 @@ export default class Juego2 extends Phaser.Scene {
       this
     );
     this.score = 0;
-    this.scoreText = this.add.text(20, 20, "Score:" + this.score, {
+    this.scoreText = this.add.text(20, 20, "Nivel:2 - Score:" + this.score, {
       fontSize: "28px",
       fontStyle: "bold",
       fill: "#ffffff",

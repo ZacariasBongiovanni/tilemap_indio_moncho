@@ -86,8 +86,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":66.8407310704961,
-                 "y":117.850762676927
+                 "x":142.217985395119,
+                 "y":136.695076258083
                 }, 
                 {
                  "height":0,
@@ -183,7 +183,7 @@
  "nextobjectid":15,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.5",
+ "tiledversion":"1.10.1",
  "tileheight":32,
  "tilesets":[
         {
@@ -200,8 +200,18 @@
          "tilewidth":32
         }, 
         {
+         "columns":25,
          "firstgid":13,
-         "source":"sky.json"
+         "image":"..\/assets\/images\/sky.png",
+         "imageheight":602,
+         "imagewidth":802,
+         "margin":0,
+         "name":"sky",
+         "spacing":0,
+         "tilecount":450,
+         "tileheight":32,
+         "tilewidth":32,
+         "transparentcolor":"#ff00ff"
         }, 
         {
          "columns":12,
@@ -218,6 +228,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.8",
+ "version":"1.10",
  "width":40
 }
