@@ -226,13 +226,11 @@ export default class Juego extends Phaser.Scene {
   }
   pasarnivel() {
     if (this.salida.visible === true) {
-      this.scene.start("juego2");
+      this.scene.start("juego3");
     }
   }
 
   chocarbomba() {
-
     this.gameOver = true;
-    
   }
 }

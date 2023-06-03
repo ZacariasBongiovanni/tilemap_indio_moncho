@@ -78,6 +78,7 @@ export default class Juego2 extends Phaser.Scene {
           break;
         }
       }
+  
     });
 
     this.physics.add.collider(this.jugador, plataformaLayer);
@@ -98,6 +99,15 @@ export default class Juego2 extends Phaser.Scene {
       null,
       this
     );
+
+    this.physics.add.collider(
+      this.jugador,
+      this.bomba,
+      this.chocarbomba,
+      null,
+      this
+    );
+
     this.score = 0;
     this.scoreText = this.add.text(20, 20, "Nivel:2 - Score:" + this.score, {
       fontSize: "28px",
@@ -116,6 +126,16 @@ export default class Juego2 extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
+
+    this.cameras.main.startFollow(this.jugador);
+
+    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+    this.scoreText.setScrollFactor(0);
+
+    this.timerText.setScrollFactor(0);
   }
 
   update() {
@@ -140,6 +160,9 @@ export default class Juego2 extends Phaser.Scene {
     //jump
     if (this.cursors.up.isDown && this.jugador.body.blocked.down) {
       this.jugador.setVelocityY(-330);
+    }
+    if (this.gameOver){
+      this.scene.start("gameOver");
     }
   }
   onSecond() {
@@ -167,5 +190,8 @@ export default class Juego2 extends Phaser.Scene {
     if (this.salida.visible === true) {
       this.scene.start("Juego");
     }
+  }
+  chocarbomba() {
+    this.gameOver = true;
   }
 }
