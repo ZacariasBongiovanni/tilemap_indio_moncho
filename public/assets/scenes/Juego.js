@@ -22,7 +22,6 @@ export default class Juego extends Phaser.Scene {
   preload() {
     // load assets
     this.load.tilemapTiledJSON("map", "./public/tilemaps/nivel1.json");
-    this.load.tilemapTiledJSON("map2", "./public/tilemaps/Nivel2.json");
     this.load.image("tilesFondo", "./public/assets/images/sky.png");
     this.load.image("tilesPlataforma", "./public/assets/images/platform.png");
 
@@ -146,6 +145,15 @@ export default class Juego extends Phaser.Scene {
       null,
       this
     );
+
+    this.physics.add.collider(
+      this.jugador,
+      this.bomba,
+      this.chocarbomba,
+      null,
+      this
+    );
+
     this.score = 0;
     this.scoreText = this.add.text(20, 20, "Nivel:1 - Score:" + this.score, {
       fontSize: "28px",
@@ -189,6 +197,11 @@ export default class Juego extends Phaser.Scene {
     if (this.cursors.up.isDown && this.jugador.body.blocked.down) {
       this.jugador.setVelocityY(-330);
     }
+
+    if (this.gameOver){
+      this.scene.start("gameOver");
+    }
+
   }
   onSecond() {
     this.timer--;
@@ -215,5 +228,11 @@ export default class Juego extends Phaser.Scene {
     if (this.salida.visible === true) {
       this.scene.start("juego2");
     }
+  }
+
+  chocarbomba() {
+
+    this.gameOver = true;
+    
   }
 }

@@ -1,8 +1,15 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
 export default class Juego2 extends Phaser.Scene {
+  score;
+  gameOver;
+  timer;
   constructor() {
     super("juego2");
+  }
+
+  preload(){
+    this.load.tilemapTiledJSON("map2", "./public/tilemaps/Nivel2.json");
   }
 
   create() {
@@ -80,7 +87,6 @@ export default class Juego2 extends Phaser.Scene {
     this.physics.add.collider(
       this.jugador,
       this.estrellas,
-      //this.bomba,
       this.recolectarEstrella,
       null,
       this
@@ -156,5 +162,10 @@ export default class Juego2 extends Phaser.Scene {
     // todo / para hacer: controlar si el grupo esta vacio
 
     // todo / para hacer: ganar el juego
+  }
+  pasarnivel() {
+    if (this.salida.visible === true) {
+      this.scene.start("Juego");
+    }
   }
 }
