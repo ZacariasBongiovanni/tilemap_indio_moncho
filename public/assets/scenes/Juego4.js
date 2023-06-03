@@ -1,22 +1,22 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class Juego3 extends Phaser.Scene {
+export default class Juego4 extends Phaser.Scene {
     score;
     gameOver;
     timer;
     constructor() {
-      super("juego3");
+      super("juego4");
     }
     init(){
         this.gameOver = false;
     }
   
     preload(){
-      this.load.tilemapTiledJSON("map3", "./public/tilemaps/Nivel3.json");
+      this.load.tilemapTiledJSON("map4", "./public/tilemaps/Nivel4.json");
     }
   
     create() {
-      const map = this.make.tilemap({ key: "map3" });
+      const map = this.make.tilemap({ key: "map4" });
   
       // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
       // Phaser's cache (i.e. the name you used in preload)
@@ -111,7 +111,7 @@ export default class Juego3 extends Phaser.Scene {
       );
 
       this.score = 0;
-      this.scoreText = this.add.text(20, 20, "Nivel:2 - Score:" + this.score, {
+      this.scoreText = this.add.text(20, 20, "Nivel:3 - Score:" + this.score, {
         fontSize: "28px",
         fontStyle: "bold",
         fill: "#ffffff",
@@ -178,7 +178,7 @@ export default class Juego3 extends Phaser.Scene {
     recolectarEstrella(jugador, estrella) {
       estrella.disableBody(true, true);
   
-      if (this.estrellas.getTotalUsed() < 5) {
+      if (this.estrellas.getTotalUsed() == 0) {
         this.salida.visible = true;
       }
   
@@ -190,7 +190,7 @@ export default class Juego3 extends Phaser.Scene {
     }
     pasarnivel() {
       if (this.salida.visible === true) {
-        this.scene.start("juego4");
+        this.scene.start("Juego");
       }
     }
 
@@ -198,4 +198,3 @@ export default class Juego3 extends Phaser.Scene {
         this.gameOver = true;
       }
   }
-  

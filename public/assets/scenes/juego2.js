@@ -7,6 +7,9 @@ export default class Juego2 extends Phaser.Scene {
   constructor() {
     super("juego2");
   }
+  init(){
+      this.gameOver = false;
+  }
 
   preload(){
     this.load.tilemapTiledJSON("map2", "./public/tilemaps/Nivel2.json");
@@ -78,7 +81,6 @@ export default class Juego2 extends Phaser.Scene {
           break;
         }
       }
-  
     });
 
     this.physics.add.collider(this.jugador, plataformaLayer);
@@ -109,7 +111,7 @@ export default class Juego2 extends Phaser.Scene {
     );
 
     this.score = 0;
-    this.scoreText = this.add.text(20, 20, "Nivel:2 - Score:" + this.score, {
+    this.scoreText = this.add.text(20, 20, "Nivel:3 - Score:" + this.score, {
       fontSize: "28px",
       fontStyle: "bold",
       fill: "#ffffff",
@@ -129,13 +131,13 @@ export default class Juego2 extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.jugador);
 
-    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+  this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+  this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    this.scoreText.setScrollFactor(0);
+  this.scoreText.setScrollFactor(0);
 
-    this.timerText.setScrollFactor(0);
+  this.timerText.setScrollFactor(0);
   }
 
   update() {
@@ -188,10 +190,11 @@ export default class Juego2 extends Phaser.Scene {
   }
   pasarnivel() {
     if (this.salida.visible === true) {
-      this.scene.start("Juego");
+      this.scene.start("Juego3");
     }
   }
+
   chocarbomba() {
-    this.gameOver = true;
-  }
+      this.gameOver = true;
+    }
 }
