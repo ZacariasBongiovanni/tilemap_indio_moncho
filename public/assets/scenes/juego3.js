@@ -9,6 +9,7 @@ export default class Juego3 extends Phaser.Scene {
     }
     init(){
         this.gameOver = false;
+        
     }
   
     preload(){
@@ -197,5 +198,9 @@ export default class Juego3 extends Phaser.Scene {
     chocarbomba() {
         this.gameOver = true;
       }
+
+    
+
+    
   }
   

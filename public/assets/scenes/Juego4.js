@@ -178,7 +178,7 @@ export default class Juego4 extends Phaser.Scene {
     recolectarEstrella(jugador, estrella) {
       estrella.disableBody(true, true);
   
-      if (this.estrellas.getTotalUsed() == 0) {
+      if (this.estrellas.getTotalUsed() < 5) {
         this.salida.visible = true;
       }
   
@@ -190,7 +190,7 @@ export default class Juego4 extends Phaser.Scene {
     }
     pasarnivel() {
       if (this.salida.visible === true) {
-        this.scene.start("Juego");
+        this.scene.start("win");
       }
     }
 
