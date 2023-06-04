@@ -17,6 +17,8 @@ export default class Juego extends Phaser.Scene {
     // data object param {}
     this.gameOver = false;
     this.timer = 20;
+    this.score = 0;
+   
   }
 
   preload() {
@@ -216,8 +218,15 @@ export default class Juego extends Phaser.Scene {
 
   recolectarEstrella(jugador, estrella) {
     estrella.disableBody(true, true);
+    
+    this.score++;
+    this.scoreText.setText(
+      "Nivel:1 - Score:" + this.score
+    );
+    
+    // this.score = this.contador*10
 
-    if (this.estrellas.getTotalUsed() < 5) {
+    if (this.estrellas.getTotalUsed() == 0) {
       this.salida.visible = true;
     }
 

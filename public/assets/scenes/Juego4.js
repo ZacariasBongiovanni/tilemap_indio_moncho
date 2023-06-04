@@ -9,6 +9,7 @@ export default class Juego4 extends Phaser.Scene {
     }
     init(){
         this.gameOver = false;
+        this.score = 0;
     }
   
     preload(){
@@ -179,10 +180,18 @@ export default class Juego4 extends Phaser.Scene {
   
     recolectarEstrella(jugador, estrella) {
       estrella.disableBody(true, true);
+
+      this.score++;
+      this.scoreText.setText(
+        "Nivel:3 - Score:" + this.score
+      );
+      
   
-      if (this.estrellas.getTotalUsed() < 5) {
+      if (this.estrellas.getTotalUsed() == 0) {
         this.salida.visible = true;
+        
       }
+      
   
       // todo / para hacer: sumar puntaje
   

@@ -9,6 +9,7 @@ export default class Juego3 extends Phaser.Scene {
     }
     init(){
         this.gameOver = false;
+        this.score = 0;
         
     }
   
@@ -119,7 +120,7 @@ export default class Juego3 extends Phaser.Scene {
         fontStyle: "bold",
         fill: "#ffffff",
       });
-      this.timer = 40;
+      this.timer = 50;
       this.timerText = this.add.text(700, 20, this.timer, {
         fontSize: "32px",
         fontStyle: "bold",
@@ -180,9 +181,14 @@ export default class Juego3 extends Phaser.Scene {
   
     recolectarEstrella(jugador, estrella) {
       estrella.disableBody(true, true);
+
+      this.score++;
+      this.scoreText.setText(
+        "Nivel:2 - Score:" + this.score
+      );
   
-      if (this.estrellas.getTotalUsed() < 5) {
-        this.salida.visible = true;
+      if (this.estrellas.getTotalUsed() == 0) {
+        this.salida.visible = true; 
       }
   
       // todo / para hacer: sumar puntaje
