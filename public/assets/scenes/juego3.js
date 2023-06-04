@@ -66,7 +66,9 @@ export default class Juego3 extends Phaser.Scene {
       this.bomba = this.physics.add
         .sprite(spawnPoint.x, spawnPoint.y, "bomb")
         .setScale(1)
-        .setBounce(1);
+        .setVelocity(250, 350)
+        .setBounce(1)
+        .setCollideWorldBounds(true);
   
       // find object layer
       // if type is "stars", add to stars group

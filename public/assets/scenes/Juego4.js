@@ -65,7 +65,9 @@ export default class Juego4 extends Phaser.Scene {
       this.bomba = this.physics.add
         .sprite(spawnPoint.x, spawnPoint.y, "bomb")
         .setScale(1)
-        .setBounce(1);
+        .setVelocity(300, 400)
+        .setBounce(1)
+        .setCollideWorldBounds(true);
   
       // find object layer
       // if type is "stars", add to stars group
@@ -116,7 +118,7 @@ export default class Juego4 extends Phaser.Scene {
         fontStyle: "bold",
         fill: "#ffffff",
       });
-      this.timer = 40;
+      this.timer = 60;
       this.timerText = this.add.text(700, 20, this.timer, {
         fontSize: "32px",
         fontStyle: "bold",

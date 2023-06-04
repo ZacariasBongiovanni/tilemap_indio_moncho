@@ -139,6 +139,18 @@
                 }, 
                 {
                  "height":0,
+                 "id":12,
+                 "name":"bomba",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":760.891640866873,
+                 "y":239.962848297214
+                }, 
+                {
+                 "height":0,
                  "id":11,
                  "name":"estrella",
                  "point":true,
@@ -168,7 +180,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.1",
