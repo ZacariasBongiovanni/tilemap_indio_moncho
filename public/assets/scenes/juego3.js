@@ -7,9 +7,9 @@ export default class Juego3 extends Phaser.Scene {
     constructor() {
       super("juego3");
     }
-    init(){
+    init({score}){
         this.gameOver = false;
-        this.score = 0;
+        this.score = score;
         
     }
   
@@ -114,7 +114,7 @@ export default class Juego3 extends Phaser.Scene {
         this
       );
 
-      this.score = 0;
+      this.score++;
       this.scoreText = this.add.text(20, 20, "Nivel:2 - Score:" + this.score, {
         fontSize: "28px",
         fontStyle: "bold",
@@ -188,7 +188,8 @@ export default class Juego3 extends Phaser.Scene {
       );
   
       if (this.estrellas.getTotalUsed() == 0) {
-        this.salida.visible = true; 
+        this.salida.visible = true;
+        this.score-- 
       }
   
       // todo / para hacer: sumar puntaje
@@ -199,7 +200,7 @@ export default class Juego3 extends Phaser.Scene {
     }
     pasarnivel() {
       if (this.salida.visible === true) {
-        this.scene.start("juego4");
+        this.scene.start("juego4",{ score: this.score,});
       }
     }
 

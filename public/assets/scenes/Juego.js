@@ -228,6 +228,7 @@ export default class Juego extends Phaser.Scene {
 
     if (this.estrellas.getTotalUsed() == 0) {
       this.salida.visible = true;
+      this.score--
     }
 
     // todo / para hacer: sumar puntaje
@@ -238,7 +239,7 @@ export default class Juego extends Phaser.Scene {
   }
   pasarnivel() {
     if (this.salida.visible === true) {
-      this.scene.start("juego3");
+      this.scene.start("juego3",{ score: this.score,});
     }
   }
 
